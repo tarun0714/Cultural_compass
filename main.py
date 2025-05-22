@@ -9,6 +9,32 @@ st.set_page_config(page_title="Cultural Lens", layout="wide")
 
 # Landing section
 show_landing()
+
+if "selected_city_info" in st.session_state:
+    city = st.session_state["selected_city_info"]
+
+    with st.sidebar:
+        st.markdown(f"### 🧭 Cultural Info for {city}")
+
+        st.write("Here’s what you can explore:")
+        st.markdown(f"- 🎭 Traditional Arts of **{city}**")
+        st.markdown(f"- 🏛️ Tourist Hotspots")
+        st.markdown(f"- 🧵 Local Crafts & Festivals")
+
+        # Optional: Chat-like LLM call
+        import openai
+        openai.api_key = st.secrets["OPENAI_API_KEY"]
+
+        prompt = f"Tell me about the cultural heritage, art forms, and best tourist spots in {city}."
+        if st.button("🧠 Ask Cultural Bot"):
+            with st.spinner("Fetching cultural insights..."):
+                response = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=[{"role": "user", "content": prompt}]
+                )
+                st.success(response["choices"][0]["message"]["content"])
+
+
 map_selection()
 
 

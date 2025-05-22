@@ -7,7 +7,7 @@ def map_selection():
     st.markdown("### 🗺️ Explore India on Map")
 
     m = folium.Map(location=[23.0, 80.0], zoom_start=5)
-    map_data = st_folium(m, width=700, height=450)
+    map_data = st_folium(m, width=700, height=350)
 
     if map_data and map_data.get("last_clicked"):
         lat = map_data["last_clicked"]["lat"]

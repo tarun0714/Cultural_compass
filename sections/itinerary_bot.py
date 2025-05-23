@@ -1,8 +1,8 @@
-
-import openai
+import cohere
 import streamlit as st
 
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+# Setup Cohere client
+co = cohere.Client(st.secrets["COHERE_API_KEY"])
 
 def generate_itinerary_via_llm(query):
     prompt = (
@@ -11,10 +11,11 @@ def generate_itinerary_via_llm(query):
         "Include famous spots, cultural insights, local food, and a warm tone. Format clearly day-wise with emojis and headings."
     )
 
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}],
+    response = co.generate(
+        model="command-light",  # ✅ Free & supported
+        prompt=prompt,
+        max_tokens=600,
         temperature=0.7
     )
 
-    return response["choices"][0]["message"]["content"]
+    return response.generations[0].text

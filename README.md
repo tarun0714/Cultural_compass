@@ -3,7 +3,7 @@
 
 ### Discover the cultural richness of India — interactively powered by AI.
 
-![Project Preview](project_preview.jpg)
+![Project Preview](project_preview.png)
 
 ---
 

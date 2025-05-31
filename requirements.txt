@@ -1,3 +1,4 @@
-
 streamlit
-openai
+cohere
+pandas
+numpy

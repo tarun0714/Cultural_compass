@@ -1,6 +1,9 @@
 streamlit
 cohere
-pandas
-numpy
 streamlit-folium
 folium
+geopy
+pandas
+numpy
+altair
+jinja2

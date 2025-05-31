@@ -2,3 +2,5 @@ streamlit
 cohere
 pandas
 numpy
+streamlit-folium
+folium
